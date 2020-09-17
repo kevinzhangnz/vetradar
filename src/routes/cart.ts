@@ -44,6 +44,7 @@ cartRouter.post('/', (req: Request, res: Response) => {
           cart.items.push(product);
         })();
 
+    sum(cart);
     res.status(201).send(cart);
   } catch (e) {
     res.status(400).send(e.message);
@@ -59,6 +60,7 @@ cartRouter.delete('/:id', (req: Request, res: Response) => {
     index > -1
       ? (() => {
           cart.items.splice(index, 1);
+          sum(cart);
           res.status(200).send(cart);
         })()
       : (() => {
@@ -68,3 +70,20 @@ cartRouter.delete('/:id', (req: Request, res: Response) => {
     res.status(400).send(e.message);
   }
 });
+
+/** sum the qty and price of the Cart
+ *  @param cartObj: expect Cart object
+ */
+const sum = (cartObj: Cart) => {
+  cartObj.totalQty = cartObj.items
+    .map((item: CartItem) => item.qty)
+    .reduce((acc, qty) => {
+      return acc + qty;
+    }, 0);
+
+  cartObj.totalPrice = cartObj.items
+    .map((item: CartItem) => item.price * item.qty)
+    .reduce((acc, price) => {
+      return acc + price;
+    }, 0);
+};
