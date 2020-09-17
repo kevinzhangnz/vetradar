@@ -81,9 +81,9 @@ const sum = (cartObj: Cart) => {
       return acc + qty;
     }, 0);
 
-  cartObj.totalPrice = cartObj.items
+  cartObj.totalPrice = +cartObj.items
     .map((item: CartItem) => item.price * item.qty)
     .reduce((acc, price) => {
       return acc + price;
-    }, 0);
+    }, 0).toFixed(2);
 };
