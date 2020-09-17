@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cart",
+    "description": "Fake Online REST API for Testing and Prototyping",
+    "version": "0.0.1"
+  },
+  "paths": {
+    "/api/cart": {
+      "get": {
+        "description": "Fetch the cart",
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the cart",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "userId": {
+                      "type": "number"
+                    },
+                    "totalQty": {
+                      "type": "number"
+                    },
+                    "totalPrice": {
+                      "type": "number"
+                    },
+                    "items": {
+                      "type": "array"
+                    }
+                  },
+                  "example": {
+                    "userId": 1,
+                    "totalQty": 1,
+                    "totalPrice": 100.0,
+                    "items": [
+                      {
+                        "id": 1,
+                        "name": "name",
+                        "qty": 1,
+                        "price": 100.0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
