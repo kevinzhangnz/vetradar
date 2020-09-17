@@ -8,7 +8,7 @@ npm run start
 The server will start under
 [http://localhost:3000](http://localhost:3000)
 
-API document is available at [https://documenter.getpostman.com/view/12614274/TVKA4eSL](POSTMAN)
+API document is available at [https://documenter.getpostman.com/view/12614274/TVKA4eSL](https://documenter.getpostman.com/view/12614274/TVKA4eSL)
 
 The swagger will start under
 [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/)
