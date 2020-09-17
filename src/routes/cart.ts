@@ -49,3 +49,22 @@ cartRouter.post('/', (req: Request, res: Response) => {
     res.status(400).send(e.message);
   }
 });
+
+// DELETE item
+cartRouter.delete('/:id', (req: Request, res: Response) => {
+  try {
+    const id = +req.params.id;
+    const index = cart.items.findIndex((obj) => obj.id === id);
+
+    index > -1
+      ? (() => {
+          cart.items.splice(index, 1);
+          res.status(200).send(cart);
+        })()
+      : (() => {
+          res.status(404).send('item not found!');
+        })();
+  } catch (e) {
+    res.status(400).send(e.message);
+  }
+});
