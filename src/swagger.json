@@ -5,6 +5,11 @@
     "description": "Fake Online REST API for Testing and Prototyping",
     "version": "0.0.1"
   },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
   "paths": {
     "/api/cart": {
       "get": {
@@ -43,6 +48,86 @@
                       }
                     ]
                   }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Add an item to the cart",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "qty": {
+                    "type": "integer"
+                  },
+                  "id": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "0": {
+                  "value": "{\n    \"id\": 1,\n    \"qty\": 10\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully added an item to the cart",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "userId": 1,
+                  "totalQty": 1,
+                  "totalPrice": 100.0,
+                  "items": [
+                    {
+                      "id": 1,
+                      "name": "name",
+                      "qty": 1,
+                      "price": 100.0
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/cart/1": {
+      "delete": {
+        "description": "Delete an item from the cart",
+        "responses": {
+          "200": {
+            "description": "Successfully deleted an item from the cart",
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "userId": 1,
+                  "totalQty": 1,
+                  "totalPrice": 100.0,
+                  "items": [
+                    {
+                      "id": 1,
+                      "name": "name",
+                      "qty": 1,
+                      "price": 100.0
+                    }
+                  ]
                 }
               }
             }
